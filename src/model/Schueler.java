@@ -3,14 +3,9 @@ package model;
 /**
  * Created by Jean-Pierre on 10.05.2017.
  */
-public class Schueler {
-
-    //Attribute
-    private String name;
-    private int alter;
+public class Schueler extends Person {
 
     //Referenzen
-    private Kurs[] kurseDesSchuelers;
     private Tadel[] tadelDesSchuelers;
 
     /**
@@ -19,25 +14,9 @@ public class Schueler {
      * @param alter
      */
     public Schueler(String name, int alter) {
-        this.name = name;
-        this.alter = alter;
+        super (name, alter);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAlter() {
-        return alter;
-    }
-
-    public void setAlter(int alter) {
-        this.alter = alter;
-    }
 
     /**
      * Ein Kurs wird der Menge der Kurse hinzugefügt.
@@ -65,8 +44,10 @@ public class Schueler {
      * @return
      */
     public String getInfo(){
-        String info = "";
         //TODO Kompakte Zeichenkette zu den Informationen eines Schülers - gut lesbar!
+        String info = super.getInfo() +
+                        "\nKurse: " + kurseDesSchuelers +
+                        "\nTadel: " + tadelDesSchuelers;
         return info;
     }
 }
