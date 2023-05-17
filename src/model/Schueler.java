@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Arrays;
+
 /**
  * Created by Jean-Pierre on 10.05.2017.
  */
@@ -45,9 +47,9 @@ public class Schueler extends Person {
      */
     public String getInfo(){
         //TODO Kompakte Zeichenkette zu den Informationen eines Schülers - gut lesbar!
+        super.getInfo();
         String info = super.getInfo() +
-                        "\nKurse: " + kurseDesSchuelers +
-                        "\nTadel: " + tadelDesSchuelers;
+                        "\nTadel: " + Arrays.toString(tadelDesSchuelers);
         return info;
     }
 }

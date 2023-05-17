@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Arrays;
+
 /**
  * Created by Jean-Pierre on 10.05.2017.
  */
@@ -7,7 +9,6 @@ public class Lehrer extends Person{
     protected String besoldungsGruppe;
 
     //Referenzen
-    protected Kurs[] kurseDesLehrers;
     protected Unterrichtsfach[] faecherDesLehrers;
 
     /**
@@ -58,10 +59,10 @@ public class Lehrer extends Person{
      */
     public String getInfo(){
         //TODO Kompakte Zeichenkette zu den Informationen eines Lehrers - gut lesbar!
+        super.getInfo();
         String info = super.getInfo() +
                         "\nBesoldungsgruppe: " + besoldungsGruppe +
-                        "\nKurse: " + kurseDesLehrers +
-                        "\nFächer: " + faecherDesLehrers;
+                        "\nFächer: " + Arrays.toString(faecherDesLehrers);
         return info;
     }
 }
