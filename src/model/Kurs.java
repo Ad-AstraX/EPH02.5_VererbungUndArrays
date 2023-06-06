@@ -49,13 +49,17 @@ public class Kurs {
      */
     public void addSchueler(Schueler neuerSchueler){
         //TODO Hinzufügen eines Schülers zu einem Kurs.
-        Schueler[] newArray = new Schueler[schuelerDesKurses.length+1];
-        for (int i = 0; i < schuelerDesKurses.length; i++) {
-            newArray[i] = schuelerDesKurses[i];
-        }
-        newArray[schuelerDesKurses.length] = neuerSchueler;
+        if (schuelerDesKurses == null) {
+            schuelerDesKurses = new Schueler[] {neuerSchueler};
+        } else {
+            Schueler[] newArray = new Schueler[schuelerDesKurses.length + 1];
+            for (int i = 0; i < schuelerDesKurses.length; i++) {
+                newArray[i] = schuelerDesKurses[i];
+            }
+            newArray[schuelerDesKurses.length] = neuerSchueler;
 
-        schuelerDesKurses = newArray;
+             schuelerDesKurses = newArray;
+        }
     }
 
     /**
@@ -65,10 +69,19 @@ public class Kurs {
      */
     public String getInfo(){
         //TODO Kompakte Zeichenkette zu den Informationen eines Kurses - gut lesbar!
+        String schuelerInfo = "";
+        if (schuelerDesKurses != null) {
+            for (int i = 0; i < schuelerDesKurses.length; i++) {
+                schuelerInfo += schuelerDesKurses[i].getName();
+                if (i != schuelerDesKurses.length-1) {
+                    schuelerInfo += ", ";
+                }
+            }
+        }
         String info = "Kursbezeichnung: " + kursBezeichnung
-                + "Fach: " + fach
-                + "Leher: " + lehrkraft
-                + "Schülernamen: " + Arrays.toString(schuelerDesKurses);
+                + "\nFach: " + fach.getFachBezeichnung()
+                + "\nLehrer: " + lehrkraft.getName()
+                + "\nSchülernamen: " + schuelerInfo;
         return info;
     }
 }

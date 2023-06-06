@@ -92,6 +92,8 @@ public class MainController {
 
         System.out.println("-----------------------------");
         System.out.println(einPaarKurse[0].getInfo());
+        System.out.println("-----------------------------");
+        System.out.println(einPaarSchueler[1].getInfo());
     }
 
 }

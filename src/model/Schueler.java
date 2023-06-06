@@ -25,17 +25,25 @@ public class Schueler extends Person {
      * Überlegt euch etwas kluges!
      * @param neuerTadel
      */
-    public void addTadel(Tadel neuerTadel){
+    public void addTadel(Tadel neuerTadel) {
         //TODO Hinzufügen eins Tadels für den Schüler.
-        Tadel[] newArray = new Tadel[tadelDesSchuelers.length+1];
-        for (int i = 0; i < tadelDesSchuelers.length; i++) {
-            newArray[i] = tadelDesSchuelers[i];
-        }
-        newArray[tadelDesSchuelers.length] = neuerTadel;
+        if (tadelDesSchuelers == null) {
+            tadelDesSchuelers = new Tadel[]{neuerTadel};
+        } else {
+            Tadel[] newArray = new Tadel[tadelDesSchuelers.length + 1];
+            for (int i = 0; i < tadelDesSchuelers.length; i++) {
+                newArray[i] = tadelDesSchuelers[i];
+            }
+            newArray[tadelDesSchuelers.length] = neuerTadel;
 
-        tadelDesSchuelers = newArray;
+            tadelDesSchuelers = newArray;
+        }
     }
 
+    public void addKurs (Kurs neuerKurs) {
+        super.addKurs(neuerKurs);
+        neuerKurs.addSchueler(this);
+    }
     /**
      * Methode erstellt aus den Informationen zum Schüler (Name, Alter, Kurse, Tadel) eine kompakte Information
      * und gibt diese als String zurück.
@@ -43,9 +51,17 @@ public class Schueler extends Person {
      */
     public String getInfo(){
         //TODO Kompakte Zeichenkette zu den Informationen eines Schülers - gut lesbar!
-        super.getInfo();
+        String tadelInfo = "";
+        if (tadelDesSchuelers != null) {
+            for (int i = 0; i < tadelDesSchuelers.length; i++) {
+                tadelInfo += tadelDesSchuelers[i].getTadelBeschreibung();
+                if (i != tadelDesSchuelers.length-1) {
+                    tadelInfo += ", ";
+                }
+            }
+        }
         String info = super.getInfo() +
-                        "\nTadel: " + Arrays.toString(tadelDesSchuelers);
+                        "\nTadel: " + tadelInfo;
         return info;
     }
 }

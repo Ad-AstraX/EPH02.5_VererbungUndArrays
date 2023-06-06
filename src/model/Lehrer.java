@@ -38,18 +38,21 @@ public class Lehrer extends Person{
      */
     public void addFach(Unterrichtsfach neuesFach){
         //TODO Hinzufügen eines Faches, das ein Lehrer unterrichten kann.
-        Unterrichtsfach[] newArray = new Unterrichtsfach[faecherDesLehrers.length+1];
-        for (int i = 0; i < faecherDesLehrers.length; i++) {
-            newArray[i] = faecherDesLehrers[i];
-        }
-        newArray[faecherDesLehrers.length] = neuesFach;
+        if (faecherDesLehrers == null) {
+            faecherDesLehrers = new Unterrichtsfach[] {neuesFach};
+        } else {
+            Unterrichtsfach[] newArray = new Unterrichtsfach[faecherDesLehrers.length + 1];
+            for (int i = 0; i < faecherDesLehrers.length; i++) {
+                newArray[i] = faecherDesLehrers[i];
+            }
+            newArray[faecherDesLehrers.length] = neuesFach;
 
-        faecherDesLehrers = newArray;
+            faecherDesLehrers = newArray;
+        }
     }
 
     public void addKurs(Kurs neuerKurs) {
         super.addKurs(neuerKurs);
-
         neuerKurs.setLehrkraft(this);
     }
     /**
@@ -58,8 +61,7 @@ public class Lehrer extends Person{
      * @return
      */
     public String getInfo(){
-        //TODO Kompakte Zeichenkette zu den Informationen eines Lehrers - gut lesbar!
-        super.getInfo();
+        //TODO Kompakte Zeichenkette zu den Informationen eines Lehrers - gut lesbar
         String info = super.getInfo() +
                         "\nBesoldungsgruppe: " + besoldungsGruppe +
                         "\nFächer: " + Arrays.toString(faecherDesLehrers);
