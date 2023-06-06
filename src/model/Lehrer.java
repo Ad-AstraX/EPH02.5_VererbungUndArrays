@@ -31,18 +31,6 @@ public class Lehrer extends Person{
     }
 
     /**
-     * Ein Kurs wird der Menge der Kurse hinzugefügt.
-     * Da wir auf der Datenstruktur Array arbeiten und diese eine statische Größe hat, müssen wir tricksen.
-     * Überlegt euch etwas kluges!
-     * Sobald das Array erweitert wurde, muss dem Kurs noch mitgeteilt werden, dass dieser Lehrer den Kurs übernimmt.
-     * @param neuerKurs
-     */
-    public void addKurs(Kurs neuerKurs){
-        //TODO Hinzufügen eines Kurses, den ein Lehrer unterrichten muss.
-
-    }
-
-    /**
      * Ein Fach wird der Menge der unterrichtenden Fächer hinzugefügt.
      * Da wir auf der Datenstruktur Array arbeiten und diese eine statische Größe hat, müssen wir tricksen.
      * Überlegt euch etwas kluges!
@@ -50,8 +38,20 @@ public class Lehrer extends Person{
      */
     public void addFach(Unterrichtsfach neuesFach){
         //TODO Hinzufügen eines Faches, das ein Lehrer unterrichten kann.
+        Unterrichtsfach[] newArray = new Unterrichtsfach[faecherDesLehrers.length+1];
+        for (int i = 0; i < faecherDesLehrers.length; i++) {
+            newArray[i] = faecherDesLehrers[i];
+        }
+        newArray[faecherDesLehrers.length] = neuesFach;
+
+        faecherDesLehrers = newArray;
     }
 
+    public void addKurs(Kurs neuerKurs) {
+        super.addKurs(neuerKurs);
+
+        neuerKurs.setLehrkraft(this);
+    }
     /**
      * Methode erstellt aus den Informationen zum Lehrer ((Name, Alter, Besoldungsgruppe, Kurse, Fächer) eine kompakte Information
      * und gibt diese als String zurück.

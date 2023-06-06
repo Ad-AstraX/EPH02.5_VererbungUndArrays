@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Arrays;
+
 /**
  * Created by Jean-Pierre on 10.05.2017.
  */
@@ -47,6 +49,13 @@ public class Kurs {
      */
     public void addSchueler(Schueler neuerSchueler){
         //TODO Hinzufügen eines Schülers zu einem Kurs.
+        Schueler[] newArray = new Schueler[schuelerDesKurses.length+1];
+        for (int i = 0; i < schuelerDesKurses.length; i++) {
+            newArray[i] = schuelerDesKurses[i];
+        }
+        newArray[schuelerDesKurses.length] = neuerSchueler;
+
+        schuelerDesKurses = newArray;
     }
 
     /**
@@ -55,8 +64,11 @@ public class Kurs {
      * @return
      */
     public String getInfo(){
-        String info = "";
         //TODO Kompakte Zeichenkette zu den Informationen eines Kurses - gut lesbar!
+        String info = "Kursbezeichnung: " + kursBezeichnung
+                + "Fach: " + fach
+                + "Leher: " + lehrkraft
+                + "Schülernamen: " + Arrays.toString(schuelerDesKurses);
         return info;
     }
 }

@@ -19,25 +19,21 @@ public class Schueler extends Person {
         super (name, alter);
     }
 
-
-    /**
-     * Ein Kurs wird der Menge der Kurse hinzugefügt.
-     * Da wir auf der Datenstruktur Array arbeiten und diese eine statische Größe hat, müssen wir tricksen.
-     * Überlegt euch etwas kluges!
-     * @param neuerKurs
-     */
-    public void addKurs(Kurs neuerKurs){
-        //TODO Hinzufügen eines Kurses, den ein Schüler aufsuchen muss.
-    }
-
     /**
      * Ein Tadel wird der Menge der Tadel hinzugefügt.
      * Da wir auf der Datenstruktur Array arbeiten und diese eine statische Größe hat, müssen wir tricksen.
      * Überlegt euch etwas kluges!
      * @param neuerTadel
      */
-    private void addTadel(Tadel neuerTadel){
+    public void addTadel(Tadel neuerTadel){
         //TODO Hinzufügen eins Tadels für den Schüler.
+        Tadel[] newArray = new Tadel[tadelDesSchuelers.length+1];
+        for (int i = 0; i < tadelDesSchuelers.length; i++) {
+            newArray[i] = tadelDesSchuelers[i];
+        }
+        newArray[tadelDesSchuelers.length] = neuerTadel;
+
+        tadelDesSchuelers = newArray;
     }
 
     /**
