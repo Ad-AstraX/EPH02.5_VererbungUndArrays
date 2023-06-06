@@ -31,17 +31,23 @@ public class Person {
         this.alter = alter;
     }
 
-    public void addObject (@NotNull Object neuesObjekt, @NotNull Object[] array) {
-        Object helpVar = new Object[1];
-        if (array.length > 0) {
-            helpVar = new Object[array.length];
-        }
 
-        for (int i = 0; i < array.length; i++) {
-            //helpVar[i] = array[i]
+    /**
+     * Ein Kurs wird der Menge der Kurse hinzugefügt.
+     * Da wir auf der Datenstruktur Array arbeiten und diese eine statische Größe hat, müssen wir tricksen.
+     * Überlegt euch etwas kluges!
+     * @param neuerKurs
+     */
+    public void addKurs(Kurs neuerKurs){
+        //TODO Hinzufügen eines Kurses, den ein Schüler aufsuchen muss.
+        Kurs[] newArray = new Kurs[kurse.length+1];
+        for (int i = 0; i < kurse.length; i++) {
+            newArray[i] = kurse[i];
         }
+        newArray[kurse.length] = neuerKurs;
+
+        kurse = newArray;
     }
-
 
     /**
      * Methode erstellt aus den Informationen zur Schnittstelle von Lehrer und Schüler (Name, Alter, Kurse) eine kompakte Information

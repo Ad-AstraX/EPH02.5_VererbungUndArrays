@@ -22,5 +22,6 @@ public class Schulleiter extends Lehrer {
      */
     public void tadelEinenSchueler(Schueler s, Tadel t){
         //TODO Umsetzung dafür, dass ein Schulleiter einem Schüler einen Tadel geben kann.
+        s.addTadel(t);
     }
 }
